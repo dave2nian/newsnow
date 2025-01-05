@@ -58,6 +58,12 @@ pnpm i
 pnpm dev
 ```
 
+added by Dave for modification claim: 
+1. port is 9015
+   it changed 2 file: Dockerfile and docker-compose.yml
+3. added the ssl supporting to replaced http connection as https.
+   added a file niginx.conf. it will use Nginx to handle SSL in app.
+
 If you want to add data sources, refer to the `shared/sources`, and `server/sources` directories. The project has complete types and a simple structure; feel free to explore.
 
 ## License
