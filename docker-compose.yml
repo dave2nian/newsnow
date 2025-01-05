@@ -5,11 +5,20 @@ services:
     image: ghcr.io/ourongxing/newsnow:latest
     container_name: newsnow
     restart: always
-    ports:
-      - '4444:4444'
     environment:
+      - PORT=9015
       - G_CLIENT_ID=
       - G_CLIENT_SECRET=
       - JWT_SECRET=
       - INIT_TABLE=true
       - ENABLE_CACHE=true
+
+  nginx:
+    image: nginx:alpine
+    ports:
+      - "9015:9015"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./ssl:/etc/nginx/ssl:ro
+    depends_on:
+      - newsnow
